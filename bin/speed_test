@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+require "pathname"
+require "fileutils"
+include FileUtils
+
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path("..", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+chdir APP_ROOT do
+  puts "== CHECK JS BUNDLE SIZE BUDGET =="
+  system! "docker run --privileged --rm -v \"$(pwd)\":/sitespeed.io sitespeedio/sitespeed.io "\
+          "http://host.docker.internal:3000/ --config performance/sitespeed_config.json"
+end

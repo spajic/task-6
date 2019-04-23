@@ -1,13 +1,4 @@
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const environment = require('./environment');
-
-environment.plugins.append(
-  'BundleAnalyzerPlugin',
-  new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-    reportFilename: '../../performance/report/bundle_analyze.html',
-  }),
-);
 
 const config = environment.toWebpackConfig();
 
