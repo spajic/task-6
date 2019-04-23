@@ -1,0 +1,10 @@
+{
+  "browsertime": {
+    "iterations": 1,
+    "browser": "chrome"
+  },
+  "budget": {
+    "configPath": "performance/sitespeed_budget.json"
+  },
+  "outputFolder": "performance/reports/sitespeed"
+}

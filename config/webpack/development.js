@@ -5,7 +5,7 @@ environment.plugins.append(
   'BundleAnalyzerPlugin',
   new BundleAnalyzerPlugin({
     analyzerMode: 'static',
-    reportFilename: '../../tmp/report.html',
+    reportFilename: '../../performance/report/bundle_analyze.html',
   }),
 );
 
