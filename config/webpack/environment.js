@@ -20,7 +20,7 @@ environment.plugins.append(
       return (
         module.context &&
         module.context.indexOf('node_modules') !== -1 &&
-        !/chart.js/.test(module.context)
+        !/moment|chart\.js/.test(module.context)
       );
     },
   }),
