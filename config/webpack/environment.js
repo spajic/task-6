@@ -7,6 +7,7 @@
 // environment.config.delete('output.chunkFilename');
 
 // module.exports = environment;
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 const { environment } = require('@rails/webpacker')
@@ -18,7 +19,9 @@ environment.plugins.append(
     name: 'vendor',
     minChunks: (module) => {
       // this assumes your vendor imports exist in the node_modules directory
-      return module.context && module.context.indexOf('node_modules') !== -1
+      return module.context &&
+             module.context.indexOf('node_modules') !== -1 &&
+             !/moment|chart\.js/.test(module.context)
     }
   })
 )
@@ -29,6 +32,11 @@ environment.plugins.append(
     name: 'manifest',
     minChunks: Infinity
   })
+)
+
+environment.plugins.append(
+  'BundleAnalyzerPlugin',
+  new BundleAnalyzerPlugin()
 )
 
 module.exports = environment
