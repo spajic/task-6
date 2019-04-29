@@ -19,6 +19,7 @@ environment.plugins.append(
     minChunks: (module) => {
       // this assumes your vendor imports exist in the node_modules directory
       return module.context && module.context.indexOf('node_modules') !== -1
+        && !/(moment|chart)/.test(module.context)
     }
   })
 )
@@ -30,5 +31,12 @@ environment.plugins.append(
     minChunks: Infinity
   })
 )
+
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+environment.plugins.append(
+  'BundleAnalyzerPlugin',
+  new BundleAnalyzerPlugin()
+);
 
 module.exports = environment
