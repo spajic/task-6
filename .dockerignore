@@ -6,7 +6,7 @@ tmp/
 node_modules/
 
 ##################################
-# 
+#
 # rest is COPIED from .gitignore
 #
 ##################################
@@ -62,4 +62,4 @@ package-lock.json
 /public/sitemap.xml.gz
 
 # Development Docker storage location
-_docker-storage/
+# _docker-storage/
