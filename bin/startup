@@ -10,7 +10,11 @@ def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
 end
 
+procfile = 'Procfile.falcon' if ENV['RACK_HANDLER']
+procfile ||=
+  ENV['RAILS_ENV'] == 'local_production' ? 'Procfile.local_prod' : 'Procfile.dev'
+
 chdir APP_ROOT do
   puts "== STARTING UP =="
-  system! "foreman start -f Procfile.dev"
+  system! "foreman start -f #{procfile}"
 end
