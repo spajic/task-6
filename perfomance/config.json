@@ -1,0 +1,10 @@
+{
+  "browsertime": {
+    "iterations": 5,
+    "browser": "chrome"
+  },
+  "budget": {
+    "configPath": "budget.json"
+  },
+  "outputFolder": "reports"
+}
